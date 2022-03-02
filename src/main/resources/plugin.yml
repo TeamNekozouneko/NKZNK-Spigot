@@ -1,0 +1,16 @@
+name: NKZNK
+version: '${project.version}'
+main: com.github.teamnekozouneko.plugins.nkznk.NKZNK
+api-version: 1.18
+authors: [ TEAMNekozouneko, Taitaitatata ]
+website: "http://nekozouneko.ddns.net/discord"
+commands:
+  nkznk:
+    description: "The NKZNK plugin command."
+    usage: "/<command> [<help|version|?>]"
+  lookup:
+    aliases: ["userinfo"]
+    description: "Lookup user information."
+    usage: "/<command> [<target>]"
+    permission: "nkznk.commands.lookup"
+    permission-message: "§c権限が不足しています。"
