@@ -64,7 +64,7 @@ public class lookup implements CommandExecutor, TabCompleter {
         sender.sendMessage("§aネットワーク §8-§r  §9§n" + player.getAddress().getAddress() + "§r §8(§a" + player.getPing() + "§7ms§8)§r");
         sender.sendMessage("§a言語ID §8-§r §7" + player.getLocale());
 
-        BaseComponent xyz = new TextComponent("§a位置（XYZ） §8-§r §7 " + String.format("%.5f", player.getLocation().getX()) + " §8/§7 " + String.format("%.5f", player.getLocation().getY() + " §8/§7 ") + String.format("%.5f", player.getLocation().getZ()) + " ");
+        BaseComponent xyz = new TextComponent("§a位置（XYZ） §8-§r §7 " + String.format("%.3f", player.getLocation().getX()) + " §8/§7 " + String.format("%.3f", player.getLocation().getY()) + " §8/§7 " + String.format("%.3f", player.getLocation().getZ()) + " ");
         BaseComponent tp_button = new TextComponent("§8[§aTeleport§8]§r");
 
         tp_button.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tp @s " + player.getLocation().getX() + " " + player.getLocation().getY() + " " + player.getLocation().getZ()));
@@ -74,9 +74,9 @@ public class lookup implements CommandExecutor, TabCompleter {
         sender.sendMessage("§aレベル / EXP §8-§r §7Lv.§a"+String.valueOf(player.getLevel())+" §8/§r §a"+String.valueOf(player.getExp())+" §7Exp.");
 
         if (player.isOp()) {
-            sender.sendMessage("§aオペレーターか? §8-§r §aいいえ");
-        } else {
             sender.sendMessage("§aオペレーターか? §8-§r §aはい");
+        } else {
+            sender.sendMessage("§aオペレーターか? §8-§r §aいいえ");
         }
         return true;
     }
