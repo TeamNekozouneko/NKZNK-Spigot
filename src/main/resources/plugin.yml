@@ -1,4 +1,4 @@
-name: NKZNK
+name: NKZNK-Spigot
 version: '${project.version}'
 main: com.github.teamnekozouneko.plugins.nkznk.NKZNK
 api-version: 1.18
@@ -14,3 +14,29 @@ commands:
     usage: "/<command> [<target>]"
     permission: "nkznk.commands.lookup"
     permission-message: "§c権限が不足しています。"
+  opchat:
+    aliases: ["opc"]
+    description: "OP chat"
+    usage: "/<command> <content>"
+    permission: "nkznk.commands.opchat"
+    permission-message: "§c権限が不足しています。"
+  list:
+    aliases: ["l"]
+    description: "Players List"
+    usage: "/<command>"
+  gamemode:
+    aliases: ["gm"]
+    description: "Change gamemode"
+    usage: "/<command> <Gamemode> [<target>]"
+    permission: "nkznk.commands.gamemode"
+    permission-message: "§c権限が不足しています。"
+  gamemodegui:
+    aliases: ["gg", "gmg", "gmgui"]
+    description: "GUI Gamemode Selector"
+    usage: "/<command>"
+    permission: "nkznk.commands.gamemodegui"
+    permission-message: "§c権限が不足しています。"
+  ping:
+    aliases: ["latency"]
+    description: "Get players ping"
+    usage: "/<command>"

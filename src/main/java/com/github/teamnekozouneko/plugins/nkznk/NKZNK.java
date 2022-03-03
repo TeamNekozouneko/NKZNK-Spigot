@@ -22,8 +22,7 @@
 
 package com.github.teamnekozouneko.plugins.nkznk;
 
-import com.github.teamnekozouneko.plugins.nkznk.commands.lookup;
-import com.github.teamnekozouneko.plugins.nkznk.commands.nkznk;
+import com.github.teamnekozouneko.plugins.nkznk.commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NKZNK extends JavaPlugin {
@@ -32,6 +31,13 @@ public final class NKZNK extends JavaPlugin {
     public void onEnable() {
         getCommand("nkznk").setExecutor(new nkznk());
         getCommand("lookup").setExecutor(new lookup(this));
+        getCommand("opchat").setExecutor(new opchat(this));
+        getCommand("list").setExecutor(new list(this));
+        getCommand("gamemode").setExecutor(new gamemode(this));
+        getCommand("gamemodegui").setExecutor(new gamemodegui(this));
+        getCommand("ping").setExecutor(new ping(this));
+
+        getServer().getPluginManager().registerEvents(new gamemodegui(this), this);
     }
 
     @Override

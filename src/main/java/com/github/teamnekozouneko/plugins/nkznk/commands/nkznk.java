@@ -22,11 +22,7 @@
 
 package com.github.teamnekozouneko.plugins.nkznk.commands;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
+import org.bukkit.command.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +31,24 @@ public class nkznk implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage("§8[§3§lNKZNK§8]§r §3NKZNK§r §8v§71.0.0 を実行中");
+            sender.sendMessage("§8[§3§lNKZNK§8]§r §3NKZNK§r §8v§71.1.0 を実行中");
             sender.sendMessage("§8[§3§lNKZNK§8]§r §7\"/nkznk §bhelp§7\"で利用可能なコマンドを表示できます。");
         } else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("help") || args[0].equalsIgnoreCase("?")) {
                 sender.sendMessage("§m          §r §3NKZNK§r §m          §r");
-                sender.sendMessage("§7/nkznk §b<help|version|?>§r §8- §fプラグインの情報系コマンドです。");
+                sender.sendMessage("§7/nkznk §b[<help|version|?>]§r §8- §fプラグインの情報系コマンドです。");
+                sender.sendMessage("§7/lookup §b[<target>]§r §8- §fユーザー情報を開示します。");
+                sender.sendMessage("§7/opchat §b<content>§r §8- §fOPのみのチャットができます。");
+                sender.sendMessage("§7/list§r §8- §fプレイヤーリストを表示します。");
+                sender.sendMessage("§7/gamemode §b<GameMode> [<target>]§r §8- §fゲームモードを変更します。");
+                sender.sendMessage("§7/gamemodegui§r §8- §f1.16.x以降のゲームモードメニューの再現");
+                sender.sendMessage("§7/ping §b[<target>]§r §8- §fユーザー情報を開示します。");
             } else if (args[0].equalsIgnoreCase("version")) {
-                sender.sendMessage("§8[§3§lNKZNK§8]§r §3NKZNK§r §8v§71.0.0 を実行中");
+                sender.sendMessage("§8[§3§lNKZNK§8]§r §3NKZNK§r §8v§71.1.0 を実行中");
                 sender.sendMessage("§8[§3§lNKZNK§8]§r §7レポジトリ: https://github.com/TEAMNekozouneko");
+            } else {
+                sender.sendMessage("§8[§3§lNKZNK§8]§r §3NKZNK§r §8v§71.1.0 を実行中");
+                sender.sendMessage("§8[§3§lNKZNK§8]§r §7\"/nkznk §bhelp§7\"で利用可能なコマンドを表示できます。");
             }
         }
         return true;
@@ -52,10 +57,16 @@ public class nkznk implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         List<String> tab = new ArrayList<>();
+        List<String> tabs = new ArrayList<>();
         if (args.length == 1) {
-            tab.add("help");
-            tab.add("?");
-            tab.add("version");
+            tabs.add("help");
+            tabs.add("?");
+            tabs.add("version");
+            for (String t : tabs) {
+                if (t.startsWith(args[0])) {
+                    tab.add(t);
+                }
+            }
         }
         return tab;
     }

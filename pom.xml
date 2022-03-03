@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.teamnekozouneko.plugins</groupId>
-    <artifactId>NKZNK</artifactId>
-    <version>1.0.0</version>
+    <artifactId>NKZNK-Spigot</artifactId>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <name>NKZNK</name>
@@ -24,8 +24,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>14</source>
+                    <target>14</target>
                 </configuration>
             </plugin>
             <plugin>

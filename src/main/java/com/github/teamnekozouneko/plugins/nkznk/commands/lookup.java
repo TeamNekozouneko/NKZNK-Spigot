@@ -26,6 +26,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Content;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -69,9 +70,10 @@ public class lookup implements CommandExecutor, TabCompleter {
 
         tp_button.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tp @s " + player.getLocation().getX() + " " + player.getLocation().getY() + " " + player.getLocation().getZ()));
 
+
         sender.spigot().sendMessage(xyz, tp_button);
 
-        sender.sendMessage("§aレベル / EXP §8-§r §7Lv.§a"+String.valueOf(player.getLevel())+" §8/§r §a"+String.valueOf(player.getExp())+" §7Exp.");
+        sender.sendMessage("§aレベル / EXP §8-§r §7Lv.§a"+String.valueOf(player.getLevel())+" §8/§r §7Exp. §a"+String.format("%.0f", player.getExp() * 100)+"% §8(§aあと"+String.format("%.0f", 100 - player.getExp() * 100) + "%で次のレベルへ§8)");
 
         if (player.isOp()) {
             sender.sendMessage("§aオペレーターか? §8-§r §aはい");
@@ -82,10 +84,14 @@ public class lookup implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
         List<String> tab = new ArrayList<>();
-        for (Player online : this.plugin.getServer().getOnlinePlayers()) {
-            tab.add(online.getName());
+        if (args.length == 1) {
+            for (Player online : this.plugin.getServer().getOnlinePlayers()) {
+                if (online.getName().startsWith(args[0])) {
+                    tab.add(online.getName());
+                }
+            }
         }
         return tab;
     }
